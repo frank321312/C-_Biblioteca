@@ -4,11 +4,13 @@ public class Cuenta
 {
     public double SaldoCuenta { get; set; }
     public Guid Cbu = Guid.NewGuid();
-    public Cuenta(double saldoCuenta)
+    public Cliente cliente;
+    public Cuenta(double saldoCuenta, Cliente cliente)
     {
         SaldoCuenta = saldoCuenta;
+        this.cliente = cliente;
     }
-    public void Debitar(Cliente cliente, double cantidad)
+    public void Debitar(double cantidad)
     {
         if (cliente.ValidarDebito(cantidad))
         {
@@ -20,7 +22,7 @@ public class Cuenta
             cliente.Saldo -= cantidad * 0.8;
         }
     }
-    public void Acreditar(Cliente cliente, double cantidad) 
+    public void Acreditar(double cantidad) 
     {
         cliente.Saldo += cantidad * 0.8;
         SaldoCuenta += cantidad * 0.2;

@@ -13,7 +13,7 @@ public class Cliente
         Saldo = saldo + cuenta.SaldoCuenta;
         this.cuenta = cuenta;
     }
-    public void Debitar(double cantidad)
+    public void DebitarEfectivo(double cantidad)
     {
         if (ValidarDebito(cantidad))
         {
@@ -25,7 +25,7 @@ public class Cliente
             cuenta.SaldoCuenta -= cantidad * 0.2;
         }
     }
-    public void Acreditar(double cantidad) 
+    public void AcreditarEfectivo(double cantidad) 
     {
         Saldo += cantidad * 0.8;
         cuenta.SaldoCuenta += cantidad * 0.2;
