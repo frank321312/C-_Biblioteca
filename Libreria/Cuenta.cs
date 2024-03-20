@@ -8,21 +8,21 @@ public class Cuenta
     {
         SaldoCuenta = saldoCuenta;
     }
-    public void Debitar(Cliente cliente, double cantidad)
+    public void Debitar(Cliente cliente, double monto)
     {
-        if (cliente.ValidarDebito(cantidad))
+        if (cliente.ValidarDebito(monto))
         {
             throw new Exception("Saldo insuficiente");
         }
         else
         {
-            SaldoCuenta -= cantidad * 0.2;
-            cliente.Saldo -= cantidad * 0.8;
+            SaldoCuenta -= monto * 0.2;
+            cliente.Saldo -= monto * 0.8;
         }
     }
-    public void Acreditar(Cliente cliente, double cantidad) 
+    public void Acreditar(Cliente cliente, double monto) 
     {
-        cliente.Saldo += cantidad * 0.8;
-        SaldoCuenta += cantidad * 0.2;
+        cliente.Saldo += monto * 0.8;
+        SaldoCuenta += monto * 0.2;
     }
 }

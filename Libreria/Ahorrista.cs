@@ -1,12 +1,23 @@
 namespace Libreria;
 
-public class Ahorrista : ICliente
+public class Ahorrista : IEstado
 {
-    public void EstadoCliente(double efectivo)
+    public void Acreditar(Cliente cliente, double monto)
     {
-        if (efectivo > 50000)
+        if (PuedeUsarme(cliente))
         {
-            System.Console.WriteLine("Tenes mas de 50.000");
+            cliente.Saldo += monto * 0.5;
+            cliente.cuenta.SaldoCuenta += monto * 0.5;
+            System.Console.WriteLine("Estado ahorrista");
         }
     }
+    public void Debitar(Cliente cliente, double monto)
+    {
+        if (PuedeUsarme(cliente))
+        {
+            cliente.Saldo -= monto * 0.5;
+            cliente.cuenta.SaldoCuenta -= monto * 0.5;
+        }
+    }    
+    public bool PuedeUsarme(Cliente cliente) => cliente.Saldo > 50000;
 }

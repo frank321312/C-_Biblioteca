@@ -1,12 +1,21 @@
 namespace Libreria;
 
-public class Emergencia : ICliente
+public class Emergencia : IEstado
 {
-    public void EstadoCliente(double efectivo)
+    public void Acreditar(Cliente cliente, double monto)
     {
-        if (efectivo < 10000)
+        if (PuedeUsarme(cliente))
         {
-            System.Console.WriteLine("Tenes menos 10.000 peso en efectivo");
+            cliente.Saldo += monto;
+            System.Console.WriteLine("Estado emergencia");
         }
     }
+    public void Debitar(Cliente cliente, double monto)
+    {
+        if (PuedeUsarme(cliente))
+        {
+            cliente.cuenta.SaldoCuenta -= monto;
+        }
+    }    
+    public bool PuedeUsarme(Cliente cliente) => cliente.Saldo < 10000;
 }
