@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/et12alumno/Descargas/C#_Biblioteca/Libreria/Libreria.csproj": {}
+    "/home/pc/Strategy/C-_Biblioteca/Libreria/Libreria.csproj": {}
   },
   "projects": {
-    "/home/et12alumno/Descargas/C#_Biblioteca/Libreria/Libreria.csproj": {
+    "/home/pc/Strategy/C-_Biblioteca/Libreria/Libreria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/et12alumno/Descargas/C#_Biblioteca/Libreria/Libreria.csproj",
+        "projectUniqueName": "/home/pc/Strategy/C-_Biblioteca/Libreria/Libreria.csproj",
         "projectName": "Libreria",
-        "projectPath": "/home/et12alumno/Descargas/C#_Biblioteca/Libreria/Libreria.csproj",
-        "packagesPath": "/home/et12alumno/.nuget/packages/",
-        "outputPath": "/home/et12alumno/Descargas/C#_Biblioteca/Libreria/obj/",
+        "projectPath": "/home/pc/Strategy/C-_Biblioteca/Libreria/Libreria.csproj",
+        "packagesPath": "/home/pc/.nuget/packages/",
+        "outputPath": "/home/pc/Strategy/C-_Biblioteca/Libreria/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/et12alumno/.nuget/NuGet/NuGet.Config"
+          "/home/pc/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -53,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/239/sdk/8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
