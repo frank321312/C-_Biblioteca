@@ -45,5 +45,5 @@ class Ahorrista {
 Emergencia ..|> IEstado
 Cauto ..|> IEstado
 Ahorrista ..|> IEstado
-Cliente *-- Cuenta
+Cuenta *-- Cliente
 ```

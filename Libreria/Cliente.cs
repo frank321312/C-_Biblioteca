@@ -6,7 +6,7 @@ public class Cliente
     public string Apellido { get; set; } 
     public double Saldo { get; set; }
     public Cuenta cuenta;
-    public IEstado oEstado;
+    private IEstado oEstado;
     public Cliente(string nombre, string apellido, double saldo, Cuenta cuenta)
     {
         Nombre = nombre;
@@ -18,23 +18,6 @@ public class Cliente
     {
         oEstado = new Emergencia();
     }
-    // public void EstadoEmergencia()
-    // {
-    //     oCliente = new Emergencia();
-    // }
-    // public ICliente EstadoCauto() 
-    // {
-    //     oCliente = new Cauto();
-    //     return oCliente;
-    // }
-    // public void EstadoAhorrista() 
-    // {
-    //     oCliente = new Ahorrista();
-    // }
-    // public void EstadoCliente()
-    // {
-    //     oCliente.EstadoCliente(Saldo);
-    // }
     public void DebitarEfectivo(double monto)
     {
         if (ValidarDebito(monto))
