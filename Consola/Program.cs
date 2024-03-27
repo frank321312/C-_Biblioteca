@@ -1,6 +1,10 @@
 ﻿using Libreria;
 
-Cuenta cuenta = new Cuenta(50);
-Cliente cliente = new Cliente("Pepito", "El mago", 10000, cuenta);
+Cuenta cuenta = new Cuenta(60000);
+Cliente cliente = new Cliente("Pepito", "El mago", 10100, cuenta);
 
-cliente.EstadoEmergencia();
+// System.Console.WriteLine(cliente.DevolverSaldo());
+cliente.DebitarEfectivo(30000);
+System.Console.WriteLine(cliente.DevolverSaldo());
+System.Console.WriteLine(cliente.cuenta.DevolverSaldo());
+System.Console.WriteLine(cliente._estado);
