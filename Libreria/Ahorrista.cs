@@ -4,20 +4,21 @@ public class Ahorrista : IEstado
 {
     public void Acreditar(Cliente cliente, double monto)
     {
-        if (PuedeUsarme(cliente))
-        {
-            cliente.Saldo += monto * 0.5;
-            cliente.cuenta.SaldoCuenta += monto * 0.5;
-            System.Console.WriteLine("Estado ahorrista");
-        }
+        cliente.Saldo += monto * 0.5;
+        cliente.cuenta.SaldoCuenta += monto * 0.5;
     }
     public void Debitar(Cliente cliente, double monto)
     {
-        if (PuedeUsarme(cliente))
+        cliente.Saldo -= monto;
+        if (cliente.Saldo < 0)
         {
-            cliente.Saldo -= monto * 0.5;
-            cliente.cuenta.SaldoCuenta -= monto * 0.5;
+            // cliente.Saldo -= monto;
+            cliente.cuenta.SaldoCuenta += cliente.Saldo;
+            cliente.Saldo = 0;
         }
-    }    
-    public bool PuedeUsarme(Cliente cliente) => cliente.Saldo > 50000;
+    }
+    public void ControlarEstado(Cliente cliente)
+    {
+        cliente.DefinirEstado(SelecionarEstado.AsignarEstado(cliente));
+    }
 }

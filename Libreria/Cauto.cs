@@ -4,20 +4,26 @@ public class Cauto : IEstado
 {
     public void Acreditar(Cliente cliente, double monto)
     {
-        if (PuedeUsarme(cliente))
-        {
-            cliente.Saldo += monto * 0.8;
-            cliente.cuenta.SaldoCuenta += monto * 0.2;
-            System.Console.WriteLine("Estado cauto");
-        }
+        cliente.Saldo += monto * 0.8;
+        cliente.cuenta.SaldoCuenta += monto * 0.2;   
     }
     public void Debitar(Cliente cliente, double monto)
     {
-        if (PuedeUsarme(cliente))
+        cliente.Saldo -= monto * 0.8;
+        cliente.cuenta.SaldoCuenta -= monto * 0.2;            
+        if (cliente.Saldo < 0)
         {
-            cliente.Saldo -= monto * 0.8;
-            cliente.cuenta.SaldoCuenta -= monto * 0.2;
+            cliente.cuenta.SaldoCuenta += cliente.Saldo;
+            cliente.Saldo = 0;
+        }
+        if (cliente.cuenta.SaldoCuenta < 0)
+        {
+            cliente.Saldo += cliente.cuenta.SaldoCuenta;
+            cliente.cuenta.SaldoCuenta = 0;
         }
     }    
-    public bool PuedeUsarme(Cliente cliente) => cliente.Saldo >= 10000 && cliente.Saldo <= 50000;
+    public void ControlarEstado(Cliente cliente)
+    {
+        cliente.DefinirEstado(SelecionarEstado.AsignarEstado(cliente));
+    }
 }

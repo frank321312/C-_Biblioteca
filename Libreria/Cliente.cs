@@ -6,17 +6,14 @@ public class Cliente
     public string Apellido { get; set; } 
     public double Saldo { get; set; }
     public Cuenta cuenta;
-    private IEstado oEstado;
+    public IEstado _estado;
     public Cliente(string nombre, string apellido, double saldo, Cuenta cuenta)
     {
         Nombre = nombre;
         Apellido = apellido;
         Saldo = saldo + cuenta.SaldoCuenta;
         this.cuenta = cuenta;
-    }
-    public void EstadoEmergencia()
-    {
-        oEstado = new Emergencia();
+        _estado = new Emergencia();
     }
     public void DebitarEfectivo(double monto)
     {
@@ -26,14 +23,20 @@ public class Cliente
         }
         else
         {
-            Saldo -= monto * 0.8;
-            cuenta.SaldoCuenta -= monto * 0.2;
+            _estado.ControlarEstado(this);
+            _estado.Debitar(this, monto);
         }
     }
     public void AcreditarEfectivo(double monto) 
     {
-        Saldo += monto * 0.8;
-        cuenta.SaldoCuenta += monto * 0.2;
+        _estado.ControlarEstado(this);
+        _estado.Acreditar(this, monto);
     }
-    public bool ValidarDebito(double monto) => Saldo - monto < 0;
+    public bool ValidarDebito(double monto) => Saldo - monto < 0 && cuenta.SaldoCuenta - monto < 0;
+    public void DefinirEstado(IEstado estado)
+    {
+        _estado = estado;
+    }
+    public Guid DevolverCbu() => cuenta.Cbu;
+    public double DevolverSaldo() => Saldo;
 }

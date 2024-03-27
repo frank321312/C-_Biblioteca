@@ -4,18 +4,20 @@ public class Emergencia : IEstado
 {
     public void Acreditar(Cliente cliente, double monto)
     {
-        if (PuedeUsarme(cliente))
-        {
-            cliente.Saldo += monto;
-            System.Console.WriteLine("Estado emergencia");
-        }
+        cliente.Saldo += monto;
     }
     public void Debitar(Cliente cliente, double monto)
     {
-        if (PuedeUsarme(cliente))
+        cliente.cuenta.SaldoCuenta -= monto;
+        // cliente.Saldo = cliente.cuenta.SaldoCuenta;
+        if (cliente.cuenta.SaldoCuenta < 0)
         {
-            cliente.cuenta.SaldoCuenta -= monto;
+            cliente.Saldo += cliente.cuenta.SaldoCuenta;
+            cliente.cuenta.SaldoCuenta = 0;
         }
-    }    
-    public bool PuedeUsarme(Cliente cliente) => cliente.Saldo < 10000;
+    }
+    public void ControlarEstado(Cliente cliente)
+    {
+        cliente.DefinirEstado(SelecionarEstado.AsignarEstado(cliente));
+    }
 }
