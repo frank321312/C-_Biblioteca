@@ -33,10 +33,6 @@ public class Cliente
         _estado = SelecionarEstado.AsignarEstado(this);
     }
     public bool ValidarDebito(double monto) => Saldo - monto < 0 && cuenta.SaldoCuenta - monto < 0;
-    public void DefinirEstado(IEstado estado)
-    {
-        _estado = estado;
-    }
     public Guid DevolverCbu() => cuenta.Cbu;
     public double DevolverSaldo() => Saldo;
 }
