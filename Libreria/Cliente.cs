@@ -13,7 +13,7 @@ public class Cliente
         Apellido = apellido;
         Saldo = saldo + cuenta.SaldoCuenta;
         this.cuenta = cuenta;
-        _estado = new Emergencia();
+        _estado = SelecionarEstado.AsignarEstado(this);
     }
     public void DebitarEfectivo(double monto)
     {
@@ -23,14 +23,14 @@ public class Cliente
         }
         else
         {
-            _estado.ControlarEstado(this);
             _estado.Debitar(this, monto);
+            _estado = SelecionarEstado.AsignarEstado(this);
         }
     }
     public void AcreditarEfectivo(double monto) 
     {
-        _estado.ControlarEstado(this);
         _estado.Acreditar(this, monto);
+        _estado = SelecionarEstado.AsignarEstado(this);
     }
     public bool ValidarDebito(double monto) => Saldo - monto < 0 && cuenta.SaldoCuenta - monto < 0;
     public void DefinirEstado(IEstado estado)

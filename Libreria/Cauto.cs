@@ -22,8 +22,5 @@ public class Cauto : IEstado
             cliente.cuenta.SaldoCuenta = 0;
         }
     }    
-    public void ControlarEstado(Cliente cliente)
-    {
-        cliente.DefinirEstado(SelecionarEstado.AsignarEstado(cliente));
-    }
+    public bool SePuedeAplicar(Cliente cliente) => cliente.Saldo >= 10000 && cliente.Saldo <= 50000;
 }

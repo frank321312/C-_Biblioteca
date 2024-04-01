@@ -9,15 +9,11 @@ public class Emergencia : IEstado
     public void Debitar(Cliente cliente, double monto)
     {
         cliente.cuenta.SaldoCuenta -= monto;
-        // cliente.Saldo = cliente.cuenta.SaldoCuenta;
         if (cliente.cuenta.SaldoCuenta < 0)
         {
             cliente.Saldo += cliente.cuenta.SaldoCuenta;
             cliente.cuenta.SaldoCuenta = 0;
         }
     }
-    public void ControlarEstado(Cliente cliente)
-    {
-        cliente.DefinirEstado(SelecionarEstado.AsignarEstado(cliente));
-    }
+    public bool SePuedeAplicar(Cliente cliente) => cliente.Saldo < 10000;
 }
