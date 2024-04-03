@@ -1,4 +1,5 @@
-﻿namespace Libreria;
+﻿
+namespace Libreria;
 
 public class Cliente
 {
@@ -6,22 +7,14 @@ public class Cliente
     public string Apellido { get; set; } 
     public double Saldo { get; set; }
     public Cuenta cuenta;
-<<<<<<< HEAD
-    public IEstado oEstado;
-=======
-    public IEstado _estado;
->>>>>>> 9c4d77730059eeed78476024e6c82b6f050f2219
+    private IEstado _estado;
     public Cliente(string nombre, string apellido, double saldo, Cuenta cuenta)
     {
         Nombre = nombre;
         Apellido = apellido;
         Saldo = saldo + cuenta.SaldoCuenta;
         this.cuenta = cuenta;
-<<<<<<< HEAD
-        oEstado = new Emergencia();
-=======
         _estado = SelecionarEstado.AsignarEstado(this);
->>>>>>> 9c4d77730059eeed78476024e6c82b6f050f2219
     }
     public void DebitarEfectivo(double monto)
     {
@@ -42,5 +35,5 @@ public class Cliente
     }
     public bool ValidarDebito(double monto) => Saldo - monto < 0 && cuenta.SaldoCuenta - monto < 0;
     public Guid DevolverCbu() => cuenta.Cbu;
-    public double DevolverSaldo() => Saldo;
+    public double DevolverSaldo() => Saldo + cuenta.SaldoCuenta;
 }

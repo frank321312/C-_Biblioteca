@@ -59,10 +59,6 @@ Emergencia ..|> IEstado
 Cauto ..|> IEstado
 Ahorrista ..|> IEstado
 Cuenta *-- Cliente
-<<<<<<< HEAD
-```
-=======
 Cliente ..> IEstado
 Cliente --> SelecionarEstado
 ```
->>>>>>> 9c4d77730059eeed78476024e6c82b6f050f2219
