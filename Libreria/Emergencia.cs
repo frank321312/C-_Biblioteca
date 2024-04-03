@@ -8,6 +8,8 @@ public class Emergencia : IEstado
         {
             cliente.Saldo += monto;
             System.Console.WriteLine("Estado emergencia");
+        } else {
+            System.Console.WriteLine("No puede usar este estado");
         }
     }
     public void Debitar(Cliente cliente, double monto)
@@ -16,6 +18,6 @@ public class Emergencia : IEstado
         {
             cliente.cuenta.SaldoCuenta -= monto;
         }
-    }    
+    }
     public bool PuedeUsarme(Cliente cliente) => cliente.Saldo < 10000;
 }

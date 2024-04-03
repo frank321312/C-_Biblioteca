@@ -6,16 +6,13 @@ public class Cliente
     public string Apellido { get; set; } 
     public double Saldo { get; set; }
     public Cuenta cuenta;
-    private IEstado oEstado;
+    public IEstado oEstado;
     public Cliente(string nombre, string apellido, double saldo, Cuenta cuenta)
     {
         Nombre = nombre;
         Apellido = apellido;
         Saldo = saldo + cuenta.SaldoCuenta;
         this.cuenta = cuenta;
-    }
-    public void EstadoEmergencia()
-    {
         oEstado = new Emergencia();
     }
     public void DebitarEfectivo(double monto)
