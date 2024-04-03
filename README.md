@@ -8,42 +8,61 @@ class Cliente {
     +Apellido: string
     +Saldo: double
     +cuenta: Cuenta
-    +DebitarEfectivo(double monto)
-    +AcreditarEfectivo(double monto)
-    +ValidarDebito(double monto)
+    -_estado: IEstado
+    +DebitarEfectivo(double monto) void
+    +AcreditarEfectivo(double monto) void
+    +ValidarDebito(double monto) bool
+    +DevolverSaldo() double
+    +DevolverCbu() Guid
 }
 
 class Cuenta {
     +SaldoCuenta: double
     +Cbu: Guid
-    +Debitar(double monto)
-    +Acreditar(double monto)
+    +Debitar(double monto) void
+    +Acreditar(double monto) void
+    +DevolverCbu() Guid
 }
 
 class IEstado {
     <<interface>>
-    ~Debitar(Cliente cliente, double monto)
-    ~Acreditar(Cliente cliente, double monto)
-    ~PuedeUsarme(Cliente cliente) bool
+    ~Debitar(Cliente cliente, double monto) void
+    ~Acreditar(Cliente cliente, double monto) void
+    ~SePuedeAplicar(Cliente cliente) bool
 }
 
 class Cauto {
-    +Debitar(Cliente, double monto)
-    +Acreditar(Cliente cliente, double monto)    
+    +Debitar(Cliente, double monto) void
+    +Acreditar(Cliente cliente, double monto) void
+    +SePuedeAplicar(Cliente cliente) bool
 }
 
 class Emergencia {
-    +Debitar(Cliente cliente, double monto)
-    +Acreditar(Cliente cliente, double monto)    
+    +Debitar(Cliente cliente, double monto) void
+    +Acreditar(Cliente cliente, double monto) void
+    +SePuedeAplicar(Cliente cliente) bool
 }
 
 class Ahorrista {
-    +Debitar(Cliente cliente, double monto)
-    +Acreditar(Cliente cliente, double monto)    
+    +Debitar(Cliente cliente, double monto) void
+    +Acreditar(Cliente cliente, double monto) void
+    +SePuedeAplicar(Cliente cliente) bool
+}
+
+class SelecionarEstado {
+    <<static>>
+    #estados: List<IEstado>
+    +AsignarEstado(Cliente cliente) IEstado
 }
 
 Emergencia ..|> IEstado
 Cauto ..|> IEstado
 Ahorrista ..|> IEstado
 Cuenta *-- Cliente
+<<<<<<< HEAD
 ```
+=======
+Cliente ..> IEstado
+Cliente --> SelecionarEstado
+```
+>>>>>>> 9c4d77730059eeed78476024e6c82b6f050f2219

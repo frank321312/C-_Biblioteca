@@ -16,13 +16,12 @@ public class Cuenta
         }
         else
         {
-            SaldoCuenta -= monto * 0.2;
-            cliente.Saldo -= monto * 0.8;
+            cliente.DebitarEfectivo(monto);
         }
     }
     public void Acreditar(Cliente cliente, double monto) 
     {
-        cliente.Saldo += monto * 0.8;
-        SaldoCuenta += monto * 0.2;
+        cliente.AcreditarEfectivo(monto);
     }
+    public double DevolverSaldo() => SaldoCuenta;
 }
